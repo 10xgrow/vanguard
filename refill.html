@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthyLife Pharmacy | Refill Prescription</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="container nav-container">
+    <div class="logo">HealthyLife Pharmacy</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="refill.html" class="active">Refill Prescription</a>
+      <a href="health-resources.html">Health Resources</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="container">
+      <h1>Refill a Prescription</h1>
+      <p>Use the secure form below to request a refill.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container form-container">
+      <form action="#" method="post">
+        <h2>Patient Information</h2>
+        <label>
+          Full Name
+          <input type="text" name="name" required>
+        </label>
+        <label>
+          Date of Birth
+          <input type="date" name="dob" required>
+        </label>
+        <label>
+          Phone Number
+          <input type="tel" name="phone" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email">
+        </label>
+
+        <h2>Prescription Details</h2>
+        <label>
+          Prescription Number(s)
+          <textarea name="rx_numbers" rows="3" placeholder="e.g., RX123456, RX987654" required></textarea>
+        </label>
+        <label>
+          Medication Name(s)
+          <textarea name="med_names" rows="3" placeholder="Optional but helpful"></textarea>
+        </label>
+
+        <h2>Pickup or Delivery</h2>
+        <label>
+          Preferred Option
+          <select name="option">
+            <option value="pickup">Pickup at Pharmacy</option>
+            <option value="delivery">Delivery (if available)</option>
+          </select>
+        </label>
+        <label>
+          Preferred Date &amp; Time
+          <input type="datetime-local" name="preferred_time">
+        </label>
+        <label>
+          Additional Notes
+          <textarea name="notes" rows="4" placeholder="Allergies, changes in insurance, etc."></textarea>
+        </label>
+
+        <p class="form-note">
+          This form sends a request only. A pharmacy team member will confirm by phone, SMS or email.
+        </p>
+
+        <button type="submit" class="btn primary">Submit Refill Request</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>&copy; <span id="year"></span> HealthyLife Pharmacy. All rights reserved.</p>
+    <p><a href="privacy.html">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
