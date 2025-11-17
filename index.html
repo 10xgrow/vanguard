@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthyLife Pharmacy | Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="container nav-container">
+    <div class="logo">HealthyLife Pharmacy</div>
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="refill.html">Refill Prescription</a>
+      <a href="health-resources.html">Health Resources</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1>Your Neighbourhood Pharmacy, Caring for You</h1>
+        <p>
+          Fast, friendly prescription service, vaccinations, health advice, and more —
+          all under one roof.
+        </p>
+        <div class="hero-buttons">
+          <a href="refill.html" class="btn primary">Refill a Prescription</a>
+          <a href="services.html" class="btn secondary">View Services</a>
+        </div>
+      </div>
+      <div class="hero-box">
+        <h2>Opening Hours</h2>
+        <ul class="hours">
+          <li><span>Mon–Fri:</span> 9:00 AM – 8:00 PM</li>
+          <li><span>Sat:</span> 10:00 AM – 6:00 PM</li>
+          <li><span>Sun:</span> 11:00 AM – 4:00 PM</li>
+        </ul>
+        <p class="hero-phone"><strong>Call:</strong> (555) 123-4567</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Why Choose HealthyLife Pharmacy?</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Personalized Care</h3>
+          <p>Our pharmacists take time to explain your medications and answer your questions.</p>
+        </div>
+        <div class="card">
+          <h3>Fast Service</h3>
+          <p>Most prescriptions filled in under 15 minutes with SMS pickup notifications.</p>
+        </div>
+        <div class="card">
+          <h3>Health Services</h3>
+          <p>Vaccinations, medication reviews, blood pressure checks, and more.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container grid-2">
+      <div>
+        <h2>Easy Online Prescription Refills</h2>
+        <p>
+          Submit your refill request online and we’ll let you know when it’s ready.
+          You can also upload a photo of your prescription (where allowed).
+        </p>
+        <ul class="list-check">
+          <li>Secure online form</li>
+          <li>Refills ready before you arrive</li>
+          <li>Option for delivery or pickup (if offered)</li>
+        </ul>
+        <a href="refill.html" class="btn primary">Refill Now</a>
+      </div>
+      <div class="info-box">
+        <h3>Location</h3>
+        <p>123 Main Street<br>City, Province, Postal Code</p>
+        <p><strong>Phone:</strong> (555) 123-4567</p>
+        <p><strong>Email:</strong> info@healthylifepharmacy.com</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <p>&copy; <span id="year"></span> HealthyLife Pharmacy. All rights reserved.</p>
+    <p><a href="privacy.html">Privacy Policy</a></p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
