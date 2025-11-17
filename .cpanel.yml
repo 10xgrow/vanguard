@@ -1,0 +1,69 @@
+# cPanel Git deployment file tuned to your cPanel repository root.
+# Deploys repository files into the cPanel path you provided (/home/vangu639/repositories/vanguard).
+# Uses DOCUMENT_ROOT when provided by cPanel; otherwise falls back to the path above.
+version: 2
+deployment:
+  tasks:
+    - echo "Starting cPanel Git deployment..."
+    - export CPANEL_DOCROOT="${DOCUMENT_ROOT:-/home/vangu639/repositories/vanguard}"
+    - echo "Target CPANEL_DOCROOT: $CPANEL_DOCROOT"
+    - mkdir -p "$CPANEL_DOCROOT"
+    - echo "Syncing repository files to target (excluding .git, .cpanel.yml, node_modules, vendor, .env)..."
+    - rsync -a --delete \
+        --exclude='.git' \
+        --exclude='.cpanel.yml' \
+        --exclude='node_modules' \
+        --exclude='vendor' \
+        --exclude='.env' \
+        ./ "$CPANEL_DOCROOT/"
+    - |
+      if [ -f "$CPANEL_DOCROOT/composer.json" ]; then
+        echo "composer.json detected — attempting composer install..."
+        cd "$CPANEL_DOCROOT" || exit 1
+        if command -v composer >/dev/null 2>&1; then
+          composer install --no-interaction --no-dev --prefer-dist --optimize-autoloader || echo "composer install failed"
+        else
+          echo "composer not found in PATH; skipping composer install"
+        fi
+      fi
+    - |
+      if [ -f "$CPANEL_DOCROOT/package.json" ]; then
+        echo "package.json detected — attempting npm install/build..."
+        cd "$CPANEL_DOCROOT" || exit 1
+        if command -v npm >/dev/null 2>&1; then
+          if [ -f package-lock.json ]; then
+            npm ci --production || npm install --production || echo "npm install failed"
+          else
+            npm install --production || echo "npm install failed"
+          fi
+          if grep -q '"build"' package.json; then
+            npm run build || echo "npm run build failed"
+          fi
+        else
+          echo "npm not found in PATH; skipping npm install/build"
+        fi
+      fi
+    - |
+      if [ -f "$CPANEL_DOCROOT/artisan" ]; then
+        echo "artisan detected — setting common Laravel permissions..."
+        find "$CPANEL_DOCROOT/storage" -type d -exec chmod 775 {} \; || true
+        find "$CPANEL_DOCROOT/storage" -type f -exec chmod 664 {} \; || true
+        chmod -R 775 "$CPANEL_DOCROOT/bootstrap/cache" || true
+      fi
+    - echo "Attempting to set ownership and sensible permissions (may be restricted on some cPanel setups)..."
+    - chown -R "$USER:$USER" "$CPANEL_DOCROOT" || true
+    - find "$CPANEL_DOCROOT" -type d -exec chmod 755 {} \; || true
+    - find "$CPANEL_DOCROOT" -type f -exec chmod 644 {} \; || true
+    - echo "Deployment complete."
+````markdown name=README.md
+# vanguard
+
+This repository contains the code for the Vanguard project. A .cpanel.yml deployment file is included so cPanel Git Version Control can deploy the repository into the cPanel repository path:
+
+/home/vangu639/repositories/vanguard
+
+Deployment notes:
+- The deploy script uses DOCUMENT_ROOT when cPanel provides it; otherwise it falls back to /home/vangu639/repositories/vanguard.
+- It skips .git, .cpanel.yml, node_modules, vendor and .env when syncing files.
+- If composer.json or package.json are present, the deployment will attempt to run composer / npm build steps if available.
+- Adjust file permissions and additional post-deploy steps for your application as needed.
