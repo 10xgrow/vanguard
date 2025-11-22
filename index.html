@@ -1,107 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>HealthyLife Pharmacy | Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanguard Rx Clinics - Gateway</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Smooth fade-in for content */
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    /* Card Hover Effects */
+    .choice-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .choice-card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Custom Gradients based on your provided images */
+    .bg-clinic-gradient {
+      background: linear-gradient(135deg, #005bac 0%, #004282 100%);
+    }
+
+    .bg-pharmacy-gradient {
+      background: linear-gradient(135deg, #00857c 0%, #006b63 100%);
+    }
+
+    /* Background Image Animation */
+    .bg-kenburns {
+      animation: kenburns 20s infinite alternate;
+    }
+
+    @keyframes kenburns {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.1);
+      }
+    }
+  </style>
 </head>
-<body>
-<header>
-  <div class="container nav-container">
-    <div class="logo">HealthyLife Pharmacy</div>
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
-      <a href="services.html">Services</a>
-      <a href="refill.html">Refill Prescription</a>
-      <a href="health-resources.html">Health Resources</a>
-      <a href="faq.html">FAQ</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+
+<body class="h-screen w-full overflow-hidden bg-gray-900 text-white">
+
+  <!-- Background Container with Image and Overlay -->
+  <div class="absolute inset-0 z-0">
+    <!-- Fallback color if image fails to load -->
+    <div class="absolute inset-0 bg-gray-800"></div>
+
+    <!-- Background Image: Clean, bright medical/reception area -->
+    <!-- Using a high-quality Unsplash image representing a modern health facility -->
+    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=2053&auto=format&fit=crop"
+      alt="Medical Background" class="w-full h-full object-cover bg-kenburns opacity-40"
+      onerror="this.style.display='none'">
+
+    <!-- Gradient Overlay to ensure text pops -->
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/60 to-gray-900/80"></div>
   </div>
-</header>
 
-<main>
-  <section class="hero">
-    <div class="container hero-inner">
-      <div>
-        <h1>Your Neighbourhood Pharmacy, Caring for You</h1>
-        <p>
-          Fast, friendly prescription service, vaccinations, health advice, and more —
-          all under one roof.
+  <!-- Main Content -->
+  <div class="relative z-10 flex flex-col h-full">
+
+    <!-- Header / Logo Area -->
+    <header class="w-full py-6 px-8 flex justify-center md:justify-start fade-in-up">
+      <div class="flex items-center gap-3">
+        <!-- Simple Logo Icon -->
+        <div
+          class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
+          <i class="fa-solid fa-heart-pulse text-blue-400 text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-white">Vanguard <span class="font-light text-gray-300">Rx
+              Clinics</span></h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Center Content -->
+    <main class="flex-grow flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+
+      <!-- Hero Text -->
+      <div class="text-center max-w-3xl mx-auto mb-12 fade-in-up delay-100">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
+          Integrated Healthcare <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-400">
+            Under One Roof
+          </span>
+        </h2>
+        <p class="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto">
+          Please select a service below to visit the dedicated website.
         </p>
-        <div class="hero-buttons">
-          <a href="refill.html" class="btn primary">Refill a Prescription</a>
-          <a href="services.html" class="btn secondary">View Services</a>
-        </div>
       </div>
-      <div class="hero-box">
-        <h2>Opening Hours</h2>
-        <ul class="hours">
-          <li><span>Mon–Fri:</span> 9:00 AM – 8:00 PM</li>
-          <li><span>Sat:</span> 10:00 AM – 6:00 PM</li>
-          <li><span>Sun:</span> 11:00 AM – 4:00 PM</li>
-        </ul>
-        <p class="hero-phone"><strong>Call:</strong> (555) 123-4567</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <h2>Why Choose HealthyLife Pharmacy?</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Personalized Care</h3>
-          <p>Our pharmacists take time to explain your medications and answer your questions.</p>
-        </div>
-        <div class="card">
-          <h3>Fast Service</h3>
-          <p>Most prescriptions filled in under 15 minutes with SMS pickup notifications.</p>
-        </div>
-        <div class="card">
-          <h3>Health Services</h3>
-          <p>Vaccinations, medication reviews, blood pressure checks, and more.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- Split Cards Container -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl fade-in-up delay-200">
 
-  <section class="section section-alt">
-    <div class="container grid-2">
-      <div>
-        <h2>Easy Online Prescription Refills</h2>
-        <p>
-          Submit your refill request online and we’ll let you know when it’s ready.
-          You can also upload a photo of your prescription (where allowed).
-        </p>
-        <ul class="list-check">
-          <li>Secure online form</li>
-          <li>Refills ready before you arrive</li>
-          <li>Option for delivery or pickup (if offered)</li>
-        </ul>
-        <a href="refill.html" class="btn primary">Refill Now</a>
-      </div>
-      <div class="info-box">
-        <h3>Location</h3>
-        <p>123 Main Street<br>City, Province, Postal Code</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Email:</strong> info@healthylifepharmacy.com</p>
-      </div>
-    </div>
-  </section>
-</main>
+        <!-- 1. CLINIC CARD (Links to vanguardclinics.ca) -->
+        <!-- Styling mimics the WELL Health blue theme from your upload -->
+        <a href="https://vanguardclinics.ca"
+          class="group relative flex flex-col overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 choice-card hover:shadow-2xl hover:shadow-blue-900/20">
+          <!-- Image/Header Section of Card -->
+          <div class="h-48 bg-clinic-gradient relative overflow-hidden flex items-center justify-center">
+            <!-- Decorative Circle -->
+            <div
+              class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700">
+            </div>
 
-<footer>
-  <div class="container footer-inner">
-    <p>&copy; <span id="year"></span> HealthyLife Pharmacy. All rights reserved.</p>
-    <p><a href="privacy.html">Privacy Policy</a></p>
+            <div class="text-center z-10">
+              <div
+                class="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 backdrop-blur-md border border-white/30">
+                <i class="fa-solid fa-user-doctor text-3xl text-white"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Medical Clinic</h3>
+            </div>
+          </div>
+
+          <!-- Content Section of Card -->
+          <div class="p-8 flex-grow bg-white bg-opacity-[0.95] text-gray-800">
+            <p class="text-gray-600 mb-6 h-12">
+              Family practice, walk-in services, and specialized medical care for you and your family.
+            </p>
+            <div class="flex items-center text-blue-700 font-semibold group-hover:translate-x-2 transition-transform">
+              <span>Go to Clinic Site</span>
+              <i class="fa-solid fa-arrow-right ml-2"></i>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2. PHARMACY CARD (Links to vanguardpharmacy.ca) -->
+        <!-- Styling mimics the Rexall/Pharma teal theme from your upload -->
+        <a href="https://vanguardpharmacy.ca"
+          class="group relative flex flex-col overflow-hidden rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 choice-card hover:shadow-2xl hover:shadow-teal-900/20">
+          <!-- Image/Header Section of Card -->
+          <div class="h-48 bg-pharmacy-gradient relative overflow-hidden flex items-center justify-center">
+            <!-- Decorative Circle -->
+            <div
+              class="absolute -left-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700">
+            </div>
+
+            <div class="text-center z-10">
+              <div
+                class="w-16 h-16 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-3 backdrop-blur-md border border-white/30">
+                <i class="fa-solid fa-prescription-bottle-medical text-3xl text-white"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-white">Pharmacy</h3>
+            </div>
+          </div>
+
+          <!-- Content Section of Card -->
+          <div class="p-8 flex-grow bg-white bg-opacity-[0.95] text-gray-800">
+            <p class="text-gray-600 mb-6 h-12">
+              Prescription refills, wellness products, and personalized medication management.
+            </p>
+            <div class="flex items-center text-teal-700 font-semibold group-hover:translate-x-2 transition-transform">
+              <span>Go to Pharmacy Site</span>
+              <i class="fa-solid fa-arrow-right ml-2"></i>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-6 text-center text-gray-400 text-sm fade-in-up delay-300 relative z-10">
+      <p>&copy;
+        <script>document.write(new Date().getFullYear())</script> Vanguard Rx Clinics. All rights reserved.
+      </p>
+    </footer>
   </div>
-</footer>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 </body>
+
 </html>
